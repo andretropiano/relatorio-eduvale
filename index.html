@@ -9,7 +9,6 @@
 body{font-family:Arial,sans-serif;background:#dde1ec}
 #app{display:flex;height:100vh;overflow:hidden}
 
-/* ── FORM ── */
 #fp{width:375px;min-width:375px;background:#f4f5f9;color:#1a1a2e;display:flex;flex-direction:column;overflow:hidden;border-right:1px solid #c8cde0}
 #fp-head{background:linear-gradient(135deg,#1e3a8a,#2d55c8);padding:14px 18px;text-align:center;flex-shrink:0}
 #fp-head h2{font-size:11.5px;color:#fff;letter-spacing:1px;text-transform:uppercase;font-weight:bold}
@@ -43,7 +42,6 @@ textarea.fi{min-height:85px;resize:vertical}
 .sig-clear:hover{background:#fff5f5;border-color:#e53e3e}
 #sig-canvas{display:block;width:100%;height:90px;cursor:crosshair;touch-action:none}
 
-/* Email notice */
 .email-notice{background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:12px 14px;margin-top:6px}
 .email-notice p{font-size:11.5px;color:#92400e;line-height:1.5;text-align:center}
 .email-notice strong{display:block;font-size:12px;color:#1e3a8a;margin-top:6px;word-break:break-all}
@@ -53,7 +51,6 @@ textarea.fi{min-height:85px;resize:vertical}
 .btn-pdf{width:100%;padding:12px;background:#1e3a8a;color:#fff;font-weight:bold;font-size:13px;border:none;border-radius:6px;cursor:pointer;margin-top:8px;letter-spacing:.5px;transition:.15s}
 .btn-pdf:hover{background:#163080}
 
-/* ── PREVIEW ── */
 #pp{flex:1;overflow-y:auto;background:#d5d9e8;padding:20px;display:flex;flex-direction:column;align-items:center;gap:18px}
 .page{width:210mm;min-height:297mm;background:#fff;padding:17mm 18mm 28mm 22mm;box-shadow:0 2px 16px rgba(0,0,40,.18);position:relative;font-family:Arial,sans-serif;font-size:11pt;color:#000;page-break-after:always}
 .page:last-child{page-break-after:avoid}
@@ -86,8 +83,7 @@ textarea.fi{min-height:85px;resize:vertical}
   body{background:white;overflow:visible}
   .page{box-shadow:none!important;width:100%!important;margin:0!important;padding:15mm 15mm 22mm 20mm!important;min-height:0}
 }
-
-@media (max-width: 800px){
+@media (max-width:800px){
   #app{flex-direction:column;height:auto}
   #fp{width:100%;min-width:0;border-right:none;border-bottom:1px solid #c8cde0}
   #pp{padding:12px}
@@ -98,7 +94,7 @@ textarea.fi{min-height:85px;resize:vertical}
 <body>
 <div id="app">
 
-<!-- ── FORM ── -->
+<!-- FORM -->
 <div id="fp">
   <div id="fp-head">
     <h2>📄 Relatório de Atividade Complementar</h2>
@@ -107,17 +103,17 @@ textarea.fi{min-height:85px;resize:vertical}
   <div id="fp-body">
 
     <div class="fs">
-      <span class="lbl">Título da Atividade</span>
-      <input type="text" class="fi" id="f-titulo" placeholder="Ex: Aula Prática – Preparo de Solo" oninput="upd()">
-    </div>
-
-    <div class="fs">
       <span class="lbl">Data da Atividade</span>
       <input type="date" class="fi" id="f-data" oninput="upd()">
     </div>
 
     <div class="fs">
-      <span class="lbl">1. Tipo de Atividade</span>
+      <span class="lbl">1. Título da Atividade</span>
+      <input type="text" class="fi" id="f-titulo" placeholder="Ex: Aula Prática – Preparo de Solo" oninput="upd()">
+    </div>
+
+    <div class="fs">
+      <span class="lbl">2. Tipo de Atividade</span>
       <label class="ri"><input type="radio" name="tipo" value="Visita Técnica/aula prática" onchange="onTipo(this)"> Visita Técnica/aula prática</label>
       <label class="ri"><input type="radio" name="tipo" value="Palestra" onchange="onTipo(this)"> Palestra</label>
       <label class="ri"><input type="radio" name="tipo" value="Dia de Campo" onchange="onTipo(this)"> Dia de Campo</label>
@@ -128,12 +124,17 @@ textarea.fi{min-height:85px;resize:vertical}
     </div>
 
     <div class="fs">
-      <span class="lbl">2. Local de Realização</span>
+      <span class="lbl">3. Local de Realização</span>
       <input type="text" class="fi" id="f-local" placeholder="Ex: Fazenda Santa Terezinha do Rio Pardo" oninput="upd()">
     </div>
 
     <div class="fs">
-      <span class="lbl">3. Avaliação da Atividade</span>
+      <span class="lbl">4. Resumo da Atividade</span>
+      <textarea class="fi" id="f-resumo" placeholder="Breve resumo do que foi desenvolvido na atividade..." oninput="upd()"></textarea>
+    </div>
+
+    <div class="fs">
+      <span class="lbl">5. Avaliação da Atividade</span>
       <textarea class="fi" id="f-aval" placeholder="Descreva os objetivos e o que foi realizado..." oninput="upd()"></textarea>
     </div>
 
@@ -146,7 +147,7 @@ textarea.fi{min-height:85px;resize:vertical}
     <hr class="divs">
 
     <div class="fs">
-      <span class="lbl">4. Carga Horária (horas)</span>
+      <span class="lbl">6. Carga Horária (horas)</span>
       <input type="number" class="fi" id="f-horas" min="1" max="40" placeholder="Ex: 3" oninput="upd()">
     </div>
     <div class="fs">
@@ -161,7 +162,7 @@ textarea.fi{min-height:85px;resize:vertical}
     <hr class="divs">
 
     <div class="fs">
-      <span class="lbl">5. Nome do Professor</span>
+      <span class="lbl">7. Nome do Professor (Responsável)</span>
       <input type="text" class="fi" id="f-prof" placeholder="Nome completo" oninput="upd()">
     </div>
     <div class="fs">
@@ -190,7 +191,7 @@ textarea.fi{min-height:85px;resize:vertical}
   </div>
 </div>
 
-<!-- ── PREVIEW ── -->
+<!-- PREVIEW -->
 <div id="pp">
 
   <!-- PÁG 1 -->
@@ -203,8 +204,12 @@ textarea.fi{min-height:85px;resize:vertical}
     <div class="rtitle">Relatório de Atividade Complementar</div>
     <div id="r-titulo" style="text-align:center;font-size:11pt;color:#1e3a8a;margin:-4px 0 16px;font-style:italic"></div>
 
+    <div class="rs">
+      <h2>1. TÍTULO DA ATIVIDADE</h2>
+      <p id="r-titulo-body">—</p>
+    </div>
     <div class="rs" id="r-tipo">
-      <h2>1. TIPO DE ATIVIDADE</h2>
+      <h2>2. TIPO DE ATIVIDADE</h2>
       <div class="tipo-row">( ) Visita Técnica/aula prática</div>
       <div class="tipo-row">( ) Palestra</div>
       <div class="tipo-row">( ) Dia de Campo</div>
@@ -213,11 +218,15 @@ textarea.fi{min-height:85px;resize:vertical}
       <div class="tipo-row">( ) Outra: _________________________________</div>
     </div>
     <div class="rs">
-      <h2>2. LOCAL DE REALIZAÇÃO</h2>
+      <h2>3. LOCAL DE REALIZAÇÃO</h2>
       <p id="r-local">—</p>
     </div>
     <div class="rs">
-      <h2>3. AVALIAÇÃO DA ATIVIDADE</h2>
+      <h2>4. RESUMO DA ATIVIDADE</h2>
+      <p id="r-resumo">—</p>
+    </div>
+    <div class="rs">
+      <h2>5. AVALIAÇÃO DA ATIVIDADE</h2>
       <p id="r-aval">—</p>
       <div class="fotos-grid" id="r-fotos"></div>
     </div>
@@ -232,11 +241,11 @@ textarea.fi{min-height:85px;resize:vertical}
       <div class="rh-cnpj">CNPJ n. º 02.330.820/0001-77</div>
     </div>
     <div class="rs">
-      <h2>4. CARGA HORÁRIA DA ATIVIDADE</h2>
+      <h2>6. CARGA HORÁRIA DA ATIVIDADE</h2>
       <p id="r-carga">—</p>
     </div>
     <div class="rs">
-      <h2>5. RESPONSÁVEL</h2>
+      <h2>7. RESPONSÁVEL</h2>
       <p id="r-resp">—</p>
     </div>
     <div class="sig-block">
@@ -264,19 +273,31 @@ function onTipo(el){
 }
 
 function upd(){
+  // 1. Título
+  const titulo=v('f-titulo');
+  g('r-titulo').textContent=titulo?`"${titulo}"`:'';
+  g('r-titulo-body').textContent=titulo||'—';
+
+  // 2. Tipo
   const sel=document.querySelector('input[name="tipo"]:checked');
   const tv=sel?sel.value:null, outra=v('f-outra');
-  let th='<h2>1. TIPO DE ATIVIDADE</h2>';
+  let th='<h2>2. TIPO DE ATIVIDADE</h2>';
   TIPOS.forEach(t=>{th+=`<div class="tipo-row">(${tv===t?'X':' '}) ${t}</div>`;});
   th+=tv==='outra'?`<div class="tipo-row">(X) Outra: ${outra||'_________________________________'}</div>`:`<div class="tipo-row">( ) Outra: _________________________________</div>`;
   g('r-tipo').innerHTML=th;
 
-  const titulo=v('f-titulo');
-  g('r-titulo').textContent=titulo?`"${titulo}"`:'';
+  // 3. Local
   g('r-local').textContent=v('f-local')||'—';
+
+  // 4. Resumo
+  const rs=v('f-resumo');
+  g('r-resumo').innerHTML=rs?rs.replace(/\n/g,'<br>'):'—';
+
+  // 5. Avaliação
   const av=v('f-aval');
   g('r-aval').innerHTML=av?av.replace(/\n/g,'<br>'):'—';
 
+  // 6. Carga horária
   const h=v('f-horas'),per=v('f-periodo'),cur=v('f-curso');
   let ct='';
   if(h)ct+=`A carga horária foi de ${h} hora${h!='1'?'s':''} de curso`;
@@ -284,6 +305,7 @@ function upd(){
   else if(h)ct+=' com os discentes da Faculdade Eduvale Avaré.';
   g('r-carga').textContent=ct||'—';
 
+  // 7. Responsável
   const pr=v('f-prof'),di=v('f-disc');
   let rt='';
   if(pr)rt+=`Professor ${pr}`;
@@ -293,7 +315,7 @@ function upd(){
   g('r-sig-name').textContent=pr||'—';
 }
 
-// ── ASSINATURA ──
+// Assinatura
 const canvas=g('sig-canvas');
 const ctx=canvas.getContext('2d');
 let drawing=false,hasSig=false;
@@ -315,7 +337,7 @@ canvas.addEventListener('touchend',()=>drawing=false);
 function clearSig(){ctx.clearRect(0,0,canvas.width,canvas.height);hasSig=false;const i=g('r-sig-img');i.src='';i.style.display='none';}
 function updSig(){if(!hasSig)return;const i=g('r-sig-img');i.src=canvas.toDataURL();i.style.display='block';}
 
-// ── FOTOS ──
+// Fotos
 function addPhotos(inp){
   Array.from(inp.files).forEach(f=>{
     const r=new FileReader();
@@ -327,7 +349,6 @@ function removePhoto(id){photos=photos.filter(p=>p.id!==id);rTh();rPh();}
 function rTh(){g('thumbs').innerHTML=photos.map(p=>`<div class="th"><img src="${p.src}"><button class="th-del" onclick="removePhoto(${p.id})">×</button></div>`).join('');}
 function rPh(){g('r-fotos').innerHTML=photos.map(p=>`<img src="${p.src}">`).join('');}
 
-// ── INIT ──
 g('f-data').value=new Date().toISOString().split('T')[0];
 upd();
 </script>
