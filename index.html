@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Relatório de Atividade Complementar – Eduvale</title>
+<title>Relatório de Atividade Complementar – UNEDUVALE</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#dde1ec}
@@ -58,7 +58,7 @@ textarea.fi{min-height:85px;resize:vertical}
 .rh{text-align:center;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:13px}
 .rh h1{font-size:14pt;font-weight:bold;color:#1e3a8a}
 .rh-sub{font-size:8pt;font-style:italic;margin-top:2px}
-.rh-cnpj{font-size:8pt}
+.rh-cnpj{font-size:8pt;margin-top:2px}
 
 .rtitle{text-align:center;font-size:12pt;font-weight:bold;text-transform:uppercase;margin:12px 0 4px;text-decoration:underline}
 .rs{margin-bottom:18px}
@@ -98,7 +98,7 @@ textarea.fi{min-height:85px;resize:vertical}
 <div id="fp">
   <div id="fp-head">
     <h2>📄 Relatório de Atividade Complementar</h2>
-    <p>Faculdade Eduvale de Avaré — Zootecnia</p>
+    <p>Centro Universitário Eduvale – UNEDUVALE</p>
   </div>
   <div id="fp-body">
 
@@ -106,12 +106,10 @@ textarea.fi{min-height:85px;resize:vertical}
       <span class="lbl">Data da Atividade</span>
       <input type="date" class="fi" id="f-data" oninput="upd()">
     </div>
-
     <div class="fs">
       <span class="lbl">Título da Atividade</span>
       <input type="text" class="fi" id="f-titulo" placeholder="Ex: Aula Prática – Preparo de Solo" oninput="upd()">
     </div>
-
     <div class="fs">
       <span class="lbl">Tipo de Atividade</span>
       <label class="ri"><input type="radio" name="tipo" value="Visita Técnica/aula prática" onchange="onTipo(this)"> Visita Técnica/aula prática</label>
@@ -122,22 +120,18 @@ textarea.fi{min-height:85px;resize:vertical}
       <label class="ri"><input type="radio" name="tipo" value="outra" onchange="onTipo(this)"> Outra:</label>
       <div id="outra-box"><input type="text" class="fi" id="f-outra" placeholder="Especifique..." oninput="upd()"></div>
     </div>
-
     <div class="fs">
       <span class="lbl">Local de Realização</span>
       <input type="text" class="fi" id="f-local" placeholder="Ex: Fazenda Santa Terezinha do Rio Pardo" oninput="upd()">
     </div>
-
     <div class="fs">
       <span class="lbl">Resumo da Atividade</span>
       <textarea class="fi" id="f-resumo" placeholder="Breve resumo do que foi desenvolvido na atividade..." oninput="upd()"></textarea>
     </div>
-
     <div class="fs">
       <span class="lbl">Avaliação da Atividade</span>
       <textarea class="fi" id="f-aval" placeholder="Descreva os objetivos e o que foi realizado..." oninput="upd()"></textarea>
     </div>
-
     <div class="fs">
       <span class="lbl">Fotos da Atividade</span>
       <label class="photo-btn">📷 Adicionar fotos<input type="file" id="f-fotos" accept="image/*" multiple style="display:none" onchange="addPhotos(this)"></label>
@@ -169,7 +163,6 @@ textarea.fi{min-height:85px;resize:vertical}
       <span class="lbl">Disciplina</span>
       <input type="text" class="fi" id="f-disc" placeholder="Ex: Máquinas e Motores Agrícola" oninput="upd()">
     </div>
-
     <div class="fs">
       <span class="lbl">Assinatura Digital</span>
       <div class="sig-pad-wrap">
@@ -187,7 +180,6 @@ textarea.fi{min-height:85px;resize:vertical}
       <p>Após gerar o PDF, envie o relatório para a coordenação:</p>
       <strong><a href="mailto:andre.almeida@ead.eduvaleavare.com.br">andre.almeida@ead.eduvaleavare.com.br</a></strong>
     </div>
-
   </div>
 </div>
 
@@ -197,12 +189,10 @@ textarea.fi{min-height:85px;resize:vertical}
   <!-- PÁG 1 -->
   <div class="page">
     <div class="rh">
-      <h1>FACULDADE EDUVALE DE AVARÉ</h1>
-      <div class="rh-sub">Mantida pela Associação Educacional do Vale da Jurumirim</div>
-      <div class="rh-cnpj">CNPJ n. º 02.330.820/0001-77</div>
+      <h1>CENTRO UNIVERSITÁRIO EDUVALE – UNEDUVALE</h1>
     </div>
     <div class="rtitle">Relatório de Atividade Complementar</div>
-    <div id="r-titulo" style="text-align:center;font-size:11pt;color:#1e3a8a;margin:-4px 0 16px;font-style:italic"></div>
+    <div id="r-titulo-sub" style="text-align:center;font-size:11pt;color:#1e3a8a;margin:-4px 0 16px;font-style:italic"></div>
 
     <div class="rs">
       <h2>1. TÍTULO DA ATIVIDADE</h2>
@@ -236,9 +226,7 @@ textarea.fi{min-height:85px;resize:vertical}
   <!-- PÁG 2 -->
   <div class="page">
     <div class="rh">
-      <h1>FACULDADE EDUVALE DE AVARÉ</h1>
-      <div class="rh-sub">Mantida pela Associação Educacional do Vale da Jurumirim</div>
-      <div class="rh-cnpj">CNPJ n. º 02.330.820/0001-77</div>
+      <h1>CENTRO UNIVERSITÁRIO EDUVALE – UNEDUVALE</h1>
     </div>
     <div class="rs">
       <h2>6. CARGA HORÁRIA DA ATIVIDADE</h2>
@@ -273,39 +261,32 @@ function onTipo(el){
 }
 
 function upd(){
-  // 1. Título
   const titulo=v('f-titulo');
-  g('r-titulo').textContent=titulo?`"${titulo}"`:'';
+  g('r-titulo-sub').textContent=titulo?`"${titulo}"`:'';
   g('r-titulo-body').textContent=titulo||'—';
 
-  // 2. Tipo
   const sel=document.querySelector('input[name="tipo"]:checked');
-  const tv=sel?sel.value:null, outra=v('f-outra');
+  const tv=sel?sel.value:null,outra=v('f-outra');
   let th='<h2>2. TIPO DE ATIVIDADE</h2>';
   TIPOS.forEach(t=>{th+=`<div class="tipo-row">(${tv===t?'X':' '}) ${t}</div>`;});
   th+=tv==='outra'?`<div class="tipo-row">(X) Outra: ${outra||'_________________________________'}</div>`:`<div class="tipo-row">( ) Outra: _________________________________</div>`;
   g('r-tipo').innerHTML=th;
 
-  // 3. Local
   g('r-local').textContent=v('f-local')||'—';
 
-  // 4. Resumo
   const rs=v('f-resumo');
   g('r-resumo').innerHTML=rs?rs.replace(/\n/g,'<br>'):'—';
 
-  // 5. Avaliação
   const av=v('f-aval');
   g('r-aval').innerHTML=av?av.replace(/\n/g,'<br>'):'—';
 
-  // 6. Carga horária
   const h=v('f-horas'),per=v('f-periodo'),cur=v('f-curso');
   let ct='';
   if(h)ct+=`A carga horária foi de ${h} hora${h!='1'?'s':''} de curso`;
-  if(per||cur)ct+=` com os discentes do ${per||'___'} do curso de ${cur||'___'} da Faculdade Eduvale Avaré.`;
-  else if(h)ct+=' com os discentes da Faculdade Eduvale Avaré.';
+  if(per||cur)ct+=` com os discentes do ${per||'___'} do curso de ${cur||'___'} da UNEDUVALE.`;
+  else if(h)ct+=' com os discentes da UNEDUVALE.';
   g('r-carga').textContent=ct||'—';
 
-  // 7. Responsável
   const pr=v('f-prof'),di=v('f-disc');
   let rt='';
   if(pr)rt+=`Professor ${pr}`;
@@ -315,7 +296,6 @@ function upd(){
   g('r-sig-name').textContent=pr||'—';
 }
 
-// Assinatura
 const canvas=g('sig-canvas');
 const ctx=canvas.getContext('2d');
 let drawing=false,hasSig=false;
@@ -337,7 +317,6 @@ canvas.addEventListener('touchend',()=>drawing=false);
 function clearSig(){ctx.clearRect(0,0,canvas.width,canvas.height);hasSig=false;const i=g('r-sig-img');i.src='';i.style.display='none';}
 function updSig(){if(!hasSig)return;const i=g('r-sig-img');i.src=canvas.toDataURL();i.style.display='block';}
 
-// Fotos
 function addPhotos(inp){
   Array.from(inp.files).forEach(f=>{
     const r=new FileReader();
