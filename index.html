@@ -55,8 +55,8 @@ textarea.fi{min-height:85px;resize:vertical}
 .page{width:210mm;min-height:297mm;background:#fff;padding:17mm 18mm 28mm 22mm;box-shadow:0 2px 16px rgba(0,0,40,.18);position:relative;font-family:Arial,sans-serif;font-size:11pt;color:#000;page-break-after:always}
 .page:last-child{page-break-after:avoid}
 
-.rh{text-align:center;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:13px}
-.rh h1{font-size:14pt;font-weight:bold;color:#1e3a8a}
+.rh{display:flex;align-items:center;gap:10px;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:13px}
+.rh h1{font-size:14pt;font-weight:bold;color:#1e3a8a;flex:1;text-align:center}
 .rh-sub{font-size:8pt;font-style:italic;margin-top:2px}
 .rh-cnpj{font-size:8pt;margin-top:2px}
 
@@ -189,9 +189,9 @@ textarea.fi{min-height:85px;resize:vertical}
   <!-- PÁG 1 -->
   <div class="page">
     <div class="rh">
+      <img src="zootecnia.png" alt="Zootecnia" style="width:65px;height:65px;object-fit:contain;float:left">
       <h1>CENTRO UNIVERSITÁRIO EDUVALE – UNEDUVALE</h1>
     </div>
-    <div class="rtitle">Relatório de Atividade Complementar</div>
     <div id="r-titulo-sub" style="text-align:center;font-size:11pt;color:#1e3a8a;margin:-4px 0 16px;font-style:italic"></div>
 
     <div class="rs">
@@ -226,7 +226,9 @@ textarea.fi{min-height:85px;resize:vertical}
   <!-- PÁG 2 -->
   <div class="page">
     <div class="rh">
+      <img src="eduvale.png" alt="Eduvale" style="width:65px;height:65px;object-fit:contain;flex-shrink:0">
       <h1>CENTRO UNIVERSITÁRIO EDUVALE – UNEDUVALE</h1>
+      <img src="zootecnia.png" alt="Zootecnia" style="width:65px;height:65px;object-fit:contain;flex-shrink:0">
     </div>
     <div class="rs">
       <h2>6. CARGA HORÁRIA DA ATIVIDADE</h2>
